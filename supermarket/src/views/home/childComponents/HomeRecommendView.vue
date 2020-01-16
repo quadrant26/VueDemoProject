@@ -1,8 +1,8 @@
 <template>
   <div class="recommend">
     <div v-for="item in recommends" class="recommend-item">
-      <a :href="item.link">
-        <img :src="item.image" alt="">
+      <a :href="item.url">
+        <img :src="item.img" alt="" v-lazy="item.img">
         <div>{{item.title}}</div>
       </a>
     </div>
@@ -26,6 +26,9 @@
 <style scoped>
   .recommend{
     display: flex;
+    flex-flow:row wrap;
+    justify-content:center;
+    align-items:center;
     width: 100%;
     text-align: center;
     font-size: 12px;
@@ -37,7 +40,6 @@
   }
   .recommend-item img{
     width: 65px;
-    height: 65px;
     margin-bottom: 5px;
   }
 </style>

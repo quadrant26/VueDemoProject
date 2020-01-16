@@ -3,9 +3,12 @@
     <nav-bar class="home-nav">
       <div slot="center">购物街</div>
     </nav-bar>
-    <home-swiper :banners="banners"></home-swiper>
+    <home-vue-swiper :banner="banner"></home-vue-swiper>
     <home-recommend-view :recommends="recommends"></home-recommend-view>
     <feature-view></feature-view>
+
+    <tab-control class="tab-control" :titles="titles"></tab-control>
+    <goods-list></goods-list>
 
     <ul>
       <li>列表1</li>
@@ -18,40 +21,152 @@
       <li>列表8</li>
       <li>列表9</li>
       <li>列表10</li>
+      <li>列表11</li>
+      <li>列表12</li>
+      <li>列表13</li>
+      <li>列表14</li>
+      <li>列表15</li>
+      <li>列表16</li>
+      <li>列表17</li>
+      <li>列表18</li>
+      <li>列表19</li>
+      <li>列表20</li>
+      <li>列表21</li>
+      <li>列表22</li>
+      <li>列表23</li>
+      <li>列表24</li>
+      <li>列表25</li>
+      <li>列表26</li>
+      <li>列表27</li>
+      <li>列表28</li>
+      <li>列表29</li>
+      <li>列表30</li>
+      <li>列表31</li>
+      <li>列表32</li>
+      <li>列表33</li>
+      <li>列表34</li>
+      <li>列表35</li>
+      <li>列表36</li>
+      <li>列表37</li>
+      <li>列表38</li>
+      <li>列表39</li>
+      <li>列表40</li>
+      <li>列表41</li>
+      <li>列表42</li>
+      <li>列表43</li>
+      <li>列表44</li>
+      <li>列表45</li>
+      <li>列表46</li>
+      <li>列表47</li>
+      <li>列表48</li>
+      <li>列表49</li>
+      <li>列表50</li>
+      <li>列表51</li>
+      <li>列表52</li>
+      <li>列表53</li>
+      <li>列表54</li>
+      <li>列表55</li>
+      <li>列表56</li>
+      <li>列表57</li>
+      <li>列表58</li>
+      <li>列表59</li>
+      <li>列表60</li>
+      <li>列表61</li>
+      <li>列表62</li>
+      <li>列表63</li>
+      <li>列表64</li>
+      <li>列表65</li>
+      <li>列表66</li>
+      <li>列表67</li>
+      <li>列表68</li>
+      <li>列表69</li>
+      <li>列表70</li>
+      <li>列表71</li>
+      <li>列表72</li>
+      <li>列表73</li>
+      <li>列表74</li>
+      <li>列表75</li>
+      <li>列表76</li>
+      <li>列表77</li>
+      <li>列表78</li>
+      <li>列表79</li>
+      <li>列表80</li>
+      <li>列表81</li>
+      <li>列表82</li>
+      <li>列表83</li>
+      <li>列表84</li>
+      <li>列表85</li>
+      <li>列表86</li>
+      <li>列表87</li>
+      <li>列表88</li>
+      <li>列表89</li>
+      <li>列表90</li>
+      <li>列表91</li>
+      <li>列表92</li>
+      <li>列表93</li>
+      <li>列表94</li>
+      <li>列表95</li>
+      <li>列表96</li>
+      <li>列表97</li>
+      <li>列表98</li>
+      <li>列表99</li>
+      <li>列表100</li>
     </ul>
 
   </div>
 </template>
 
 <script>
-  import NavBar from 'components/common/navbar/NavBar'
-  import {getHomeMultidata} from "network/home";
-
-  import HomeSwiper from './childComponents/HomeSwiper'
+  import HomeVueSwiper from './childComponents/HomeVueSwiper'
   import HomeRecommendView from './childComponents/HomeRecommendView'
   import FeatureView from './childComponents/FeatureView'
+  import GoodsList from 'components/content/goods/GoodsList'
+
+  import TabControl from 'components/content/tabControl/TabControl'
+  import NavBar from 'components/common/navbar/NavBar'
+
+  import {getHomeMultidata, getHomeData} from "network/home";
 
   export default {
     name: "Home",
     components: {
       NavBar,
-      HomeSwiper,
+      HomeVueSwiper,
       HomeRecommendView,
-      FeatureView
+      FeatureView,
+      TabControl,
+      GoodsList
     },
     data (){
       return {
         result: null,
-        banners: [],
-        recommends: []
+        banner: [],
+        recommends: [],
+        titles: ["流行", "新款", "精选"]
       }
     },
     created (){
-      // 1. 请求多个数组
-      getHomeMultidata().then( res => {
-        this.banners = res.data.banner.list
-        this.recommends = res.data.recommend.list
-      })
+      //
+      this.getMultidata();
+
+      //
+      this.getHomeData();
+    },
+    methods: {
+      /**
+       * 网络请求相关方法
+       */
+      getMultidata(){
+        getHomeMultidata().then( res => {
+          this.banner = res.data.banner
+          this.recommends = res.data.subnav
+        })
+      },
+      getHomeData (){
+        getHomeData().then( res => {
+
+        })
+      }
     }
   }
 </script>
@@ -69,5 +184,10 @@
     left:0;
     right:0;
     z-index: 10;
+  }
+
+  .tab-control{
+    position: sticky;
+    top:44px;
   }
 </style>
