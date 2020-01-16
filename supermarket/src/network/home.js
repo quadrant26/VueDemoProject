@@ -10,12 +10,13 @@ export function getHomeMultidata() {
   })
 }
 
-export function getHomeData() {
+export function getHomeData(type, page) {
   return request({
     url: '/apimobile.php',
     method: 'post',
     data: {
-      act: 'hotbelow'
+      act: type,
+      page: page || 1
     }
   })
 }
