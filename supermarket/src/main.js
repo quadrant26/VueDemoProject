@@ -3,6 +3,10 @@ import App from './App.vue'
 
 import router from './router/index'
 
+// 图片懒加载
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload)
+
 // 这是全局挂载
 /**
 import VueAwesomeSwiper from 'vue-awesome-swiper'
