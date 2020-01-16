@@ -3,7 +3,7 @@ import {request} from "./request";
 export function getHomeMultidata() {
   return request({
     url: '/apimobile.php',
-    type: 'post',
+    method: 'post',
     data: {
       act: 'index'
     }
@@ -13,8 +13,8 @@ export function getHomeMultidata() {
 export function getHomeData() {
   return request({
     url: '/apimobile.php',
-    type: 'post',
-    params: {
+    method: 'post',
+    data: {
       act: 'hotbelow'
     }
   })

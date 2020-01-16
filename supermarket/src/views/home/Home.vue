@@ -158,6 +158,7 @@
        */
       getMultidata(){
         getHomeMultidata().then( res => {
+          console.log(res)
           this.banner = res.data.banner
           this.recommends = res.data.subnav
         })
