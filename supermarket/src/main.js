@@ -5,7 +5,10 @@ import router from './router/index'
 
 // 图片懒加载
 import VueLazyload from 'vue-lazyload'
-Vue.use(VueLazyload)
+Vue.use(VueLazyload, {
+  preLoad: 1,
+  loading: require('assets/img/loading/loading.gif')
+})
 
 // 这是全局挂载
 /**
